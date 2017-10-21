@@ -26,6 +26,7 @@
                                            var="idEmpleadoItem"
                                            itemValue="#{idEmpleadoItem}"/>
                         </p:selectOneMenu>
+                        <p:outputLabel value="#{requestBundle.CreateSolicitudRequerimientoLabel_idEmpleado}" for="idEmpleado" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{solicitudRequerimientoController.create}" value="#{requestBundle.Save}" update="display,:SolicitudRequerimientoListForm:datalist,:growl" oncomplete="handleSubmit(args,'SolicitudRequerimientoCreateDialog');"/>
                     <p:commandButton value="#{requestBundle.Cancel}" onclick="SolicitudRequerimientoCreateDialog.hide()"/>
