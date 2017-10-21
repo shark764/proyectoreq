@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EquipoViewDlg" widgetVar="EquipoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{cataloguesBundle.ViewEquipoTitle}">
+            <h:form id="EquipoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{equipoController.selected != null}">
+                        <h:outputText value="#{cataloguesBundle.ViewEquipoLabel_id}"/>
+                        <h:outputText value="#{equipoController.selected.id}" title="#{cataloguesBundle.ViewEquipoTitle_id}"/>
+                        <h:outputText value="#{cataloguesBundle.ViewEquipoLabel_nombre}"/>
+                        <h:outputText value="#{equipoController.selected.nombre}" title="#{cataloguesBundle.ViewEquipoTitle_nombre}"/>
+                        <h:outputText value="#{cataloguesBundle.ViewEquipoLabel_serie}"/>
+                        <h:outputText value="#{equipoController.selected.serie}" title="#{cataloguesBundle.ViewEquipoTitle_serie}"/>
+                        <h:outputText value="#{cataloguesBundle.ViewEquipoLabel_inventario}"/>
+                        <h:outputText value="#{equipoController.selected.inventario}" title="#{cataloguesBundle.ViewEquipoTitle_inventario}"/>
+                        <h:outputText value="#{cataloguesBundle.ViewEquipoLabel_existencia}"/>
+                        <h:outputText value="#{equipoController.selected.existencia}" title="#{cataloguesBundle.ViewEquipoTitle_existencia}"/>
+                        <h:outputText value="#{cataloguesBundle.ViewEquipoLabel_fechaAdquisicion}"/>
+                        <h:outputText value="#{equipoController.selected.fechaAdquisicion}" title="#{cataloguesBundle.ViewEquipoTitle_fechaAdquisicion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{cataloguesBundle.ViewEquipoLabel_ip}"/>
+                        <h:outputText value="#{equipoController.selected.ip}" title="#{cataloguesBundle.ViewEquipoTitle_ip}"/>
+                        <h:outputText value="#{cataloguesBundle.ViewEquipoLabel_descripcion}"/>
+                        <h:outputText value="#{equipoController.selected.descripcion}" title="#{cataloguesBundle.ViewEquipoTitle_descripcion}"/>
+                        <h:outputText value="#{cataloguesBundle.ViewEquipoLabel_idArea}"/>
+                        <h:outputText value="#{equipoController.selected.idArea}" title="#{cataloguesBundle.ViewEquipoTitle_idArea}"/>
+                        <h:outputText value="#{cataloguesBundle.ViewEquipoLabel_idCategoriaEquipo}"/>
+                        <h:outputText value="#{equipoController.selected.idCategoriaEquipo}" title="#{cataloguesBundle.ViewEquipoTitle_idCategoriaEquipo}"/>
+                        <h:outputText value="#{cataloguesBundle.ViewEquipoLabel_idEquipo}"/>
+                        <h:outputText value="#{equipoController.selected.idEquipo}" title="#{cataloguesBundle.ViewEquipoTitle_idEquipo}"/>
+                        <h:outputText value="#{cataloguesBundle.ViewEquipoLabel_idEstadoEquipo}"/>
+                        <h:outputText value="#{equipoController.selected.idEstadoEquipo}" title="#{cataloguesBundle.ViewEquipoTitle_idEstadoEquipo}"/>
+                        <h:outputText value="#{cataloguesBundle.ViewEquipoLabel_idModelo}"/>
+                        <h:outputText value="#{equipoController.selected.idModelo}" title="#{cataloguesBundle.ViewEquipoTitle_idModelo}"/>
+                        <h:outputText value="#{cataloguesBundle.ViewEquipoLabel_idProveedor}"/>
+                        <h:outputText value="#{equipoController.selected.idProveedor}" title="#{cataloguesBundle.ViewEquipoTitle_idProveedor}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{cataloguesBundle.Close}" onclick="EquipoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

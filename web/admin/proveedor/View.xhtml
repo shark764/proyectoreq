@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProveedorViewDlg" widgetVar="ProveedorViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{adminBundle.ViewProveedorTitle}">
+            <h:form id="ProveedorViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{proveedorController.selected != null}">
+                        <h:outputText value="#{adminBundle.ViewProveedorLabel_id}"/>
+                        <h:outputText value="#{proveedorController.selected.id}" title="#{adminBundle.ViewProveedorTitle_id}"/>
+                        <h:outputText value="#{adminBundle.ViewProveedorLabel_nombre}"/>
+                        <h:outputText value="#{proveedorController.selected.nombre}" title="#{adminBundle.ViewProveedorTitle_nombre}"/>
+                        <h:outputText value="#{adminBundle.ViewProveedorLabel_nit}"/>
+                        <h:outputText value="#{proveedorController.selected.nit}" title="#{adminBundle.ViewProveedorTitle_nit}"/>
+                        <h:outputText value="#{adminBundle.ViewProveedorLabel_direccion}"/>
+                        <h:outputText value="#{proveedorController.selected.direccion}" title="#{adminBundle.ViewProveedorTitle_direccion}"/>
+                        <h:outputText value="#{adminBundle.ViewProveedorLabel_nrc}"/>
+                        <h:outputText value="#{proveedorController.selected.nrc}" title="#{adminBundle.ViewProveedorTitle_nrc}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{adminBundle.Close}" onclick="ProveedorViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

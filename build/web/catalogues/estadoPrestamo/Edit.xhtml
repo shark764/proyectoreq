@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstadoPrestamoEditDlg" widgetVar="EstadoPrestamoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{cataloguesBundle.EditEstadoPrestamoTitle}">
+            <h:form id="EstadoPrestamoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estadoPrestamoController.selected != null}">
+                        <p:outputLabel value="#{cataloguesBundle.EditEstadoPrestamoLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{estadoPrestamoController.selected.nombre}" title="#{cataloguesBundle.EditEstadoPrestamoTitle_nombre}" required="true" requiredMessage="#{cataloguesBundle.EditEstadoPrestamoRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{cataloguesBundle.EditEstadoPrestamoLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{estadoPrestamoController.selected.codigo}" title="#{cataloguesBundle.EditEstadoPrestamoTitle_codigo}" required="true" requiredMessage="#{cataloguesBundle.EditEstadoPrestamoRequiredMessage_codigo}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{estadoPrestamoController.update}" value="#{cataloguesBundle.Save}" update="display,:EstadoPrestamoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EstadoPrestamoEditDialog');"/>
+                    <p:commandButton value="#{cataloguesBundle.Cancel}" onclick="EstadoPrestamoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

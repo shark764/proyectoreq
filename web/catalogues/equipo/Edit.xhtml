@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EquipoEditDlg" widgetVar="EquipoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{cataloguesBundle.EditEquipoTitle}">
+            <h:form id="EquipoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{equipoController.selected != null}">
+                        <p:outputLabel value="#{cataloguesBundle.EditEquipoLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{equipoController.selected.nombre}" title="#{cataloguesBundle.EditEquipoTitle_nombre}" required="true" requiredMessage="#{cataloguesBundle.EditEquipoRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{cataloguesBundle.EditEquipoLabel_serie}" for="serie" />
+                        <p:inputText id="serie" value="#{equipoController.selected.serie}" title="#{cataloguesBundle.EditEquipoTitle_serie}" required="true" requiredMessage="#{cataloguesBundle.EditEquipoRequiredMessage_serie}"/>
+                        <p:outputLabel value="#{cataloguesBundle.EditEquipoLabel_inventario}" for="inventario" />
+                        <p:inputText id="inventario" value="#{equipoController.selected.inventario}" title="#{cataloguesBundle.EditEquipoTitle_inventario}" />
+                        <p:outputLabel value="#{cataloguesBundle.EditEquipoLabel_existencia}" for="existencia" />
+                        <p:inputText id="existencia" value="#{equipoController.selected.existencia}" title="#{cataloguesBundle.EditEquipoTitle_existencia}" required="true" requiredMessage="#{cataloguesBundle.EditEquipoRequiredMessage_existencia}"/>
+                        <p:outputLabel value="#{cataloguesBundle.EditEquipoLabel_fechaAdquisicion}" for="fechaAdquisicion" />
+                        <p:calendar id="fechaAdquisicion" pattern="MM/dd/yyyy HH:mm:ss" value="#{equipoController.selected.fechaAdquisicion}" title="#{cataloguesBundle.EditEquipoTitle_fechaAdquisicion}" required="true" requiredMessage="#{cataloguesBundle.EditEquipoRequiredMessage_fechaAdquisicion}" showOn="button"/>
+                        <p:outputLabel value="#{cataloguesBundle.EditEquipoLabel_ip}" for="ip" />
+                        <p:inputText id="ip" value="#{equipoController.selected.ip}" title="#{cataloguesBundle.EditEquipoTitle_ip}" />
+                        <p:outputLabel value="#{cataloguesBundle.EditEquipoLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{equipoController.selected.descripcion}" title="#{cataloguesBundle.EditEquipoTitle_descripcion}" />
+                        <p:outputLabel value="#{cataloguesBundle.EditEquipoLabel_idArea}" for="idArea" />
+                        <p:selectOneMenu id="idArea" value="#{equipoController.selected.idArea}" required="true" requiredMessage="#{cataloguesBundle.EditEquipoRequiredMessage_idArea}">
+                            <f:selectItem itemLabel="#{cataloguesBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{areaController.itemsAvailableSelectOne}"
+                                           var="idAreaItem"
+                                           itemValue="#{idAreaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{cataloguesBundle.EditEquipoLabel_idCategoriaEquipo}" for="idCategoriaEquipo" />
+                        <p:selectOneMenu id="idCategoriaEquipo" value="#{equipoController.selected.idCategoriaEquipo}" required="true" requiredMessage="#{cataloguesBundle.EditEquipoRequiredMessage_idCategoriaEquipo}">
+                            <f:selectItem itemLabel="#{cataloguesBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{categoriaEquipoController.itemsAvailableSelectOne}"
+                                           var="idCategoriaEquipoItem"
+                                           itemValue="#{idCategoriaEquipoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{cataloguesBundle.EditEquipoLabel_idEquipo}" for="idEquipo" />
+                        <p:selectOneMenu id="idEquipo" value="#{equipoController.selected.idEquipo}" >
+                            <f:selectItem itemLabel="#{cataloguesBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"
+                                           var="idEquipoItem"
+                                           itemValue="#{idEquipoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{cataloguesBundle.EditEquipoLabel_idEstadoEquipo}" for="idEstadoEquipo" />
+                        <p:selectOneMenu id="idEstadoEquipo" value="#{equipoController.selected.idEstadoEquipo}" required="true" requiredMessage="#{cataloguesBundle.EditEquipoRequiredMessage_idEstadoEquipo}">
+                            <f:selectItem itemLabel="#{cataloguesBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{estadoEquipoController.itemsAvailableSelectOne}"
+                                           var="idEstadoEquipoItem"
+                                           itemValue="#{idEstadoEquipoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{cataloguesBundle.EditEquipoLabel_idModelo}" for="idModelo" />
+                        <p:selectOneMenu id="idModelo" value="#{equipoController.selected.idModelo}" required="true" requiredMessage="#{cataloguesBundle.EditEquipoRequiredMessage_idModelo}">
+                            <f:selectItem itemLabel="#{cataloguesBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{modeloEquipoController.itemsAvailableSelectOne}"
+                                           var="idModeloItem"
+                                           itemValue="#{idModeloItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{cataloguesBundle.EditEquipoLabel_idProveedor}" for="idProveedor" />
+                        <p:selectOneMenu id="idProveedor" value="#{equipoController.selected.idProveedor}" required="true" requiredMessage="#{cataloguesBundle.EditEquipoRequiredMessage_idProveedor}">
+                            <f:selectItem itemLabel="#{cataloguesBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"
+                                           var="idProveedorItem"
+                                           itemValue="#{idProveedorItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{equipoController.update}" value="#{cataloguesBundle.Save}" update="display,:EquipoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EquipoEditDialog');"/>
+                    <p:commandButton value="#{cataloguesBundle.Cancel}" onclick="EquipoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

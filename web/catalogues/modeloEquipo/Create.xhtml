@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ModeloEquipoCreateDlg" widgetVar="ModeloEquipoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{cataloguesBundle.CreateModeloEquipoTitle}">
+            <h:form id="ModeloEquipoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{modeloEquipoController.selected != null}">
+                        <p:outputLabel value="#{cataloguesBundle.CreateModeloEquipoLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{modeloEquipoController.selected.nombre}" title="#{cataloguesBundle.CreateModeloEquipoTitle_nombre}" required="true" requiredMessage="#{cataloguesBundle.CreateModeloEquipoRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{cataloguesBundle.CreateModeloEquipoLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{modeloEquipoController.selected.codigo}" title="#{cataloguesBundle.CreateModeloEquipoTitle_codigo}" required="true" requiredMessage="#{cataloguesBundle.CreateModeloEquipoRequiredMessage_codigo}"/>
+                        <p:outputLabel value="#{cataloguesBundle.CreateModeloEquipoLabel_idMarca}" for="idMarca" />
+                        <p:selectOneMenu id="idMarca" value="#{modeloEquipoController.selected.idMarca}" required="true" requiredMessage="#{cataloguesBundle.EditModeloEquipoRequiredMessage_idMarca}">
+                            <f:selectItems value="#{marcaEquipoController.itemsAvailableSelectOne}"
+                                           var="idMarcaItem"
+                                           itemValue="#{idMarcaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{modeloEquipoController.create}" value="#{cataloguesBundle.Save}" update="display,:ModeloEquipoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ModeloEquipoCreateDialog');"/>
+                    <p:commandButton value="#{cataloguesBundle.Cancel}" onclick="ModeloEquipoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

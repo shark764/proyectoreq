@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetallePrestamoEditDlg" widgetVar="DetallePrestamoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{loanRequestBundle.EditDetallePrestamoTitle}">
+            <h:form id="DetallePrestamoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detallePrestamoController.selected != null}">
+                        <p:outputLabel value="#{loanRequestBundle.EditDetallePrestamoLabel_fechaPrestamo}" for="fechaPrestamo" />
+                        <p:calendar id="fechaPrestamo" pattern="MM/dd/yyyy HH:mm:ss" value="#{detallePrestamoController.selected.fechaPrestamo}" title="#{loanRequestBundle.EditDetallePrestamoTitle_fechaPrestamo}" required="true" requiredMessage="#{loanRequestBundle.EditDetallePrestamoRequiredMessage_fechaPrestamo}" showOn="button"/>
+                        <p:outputLabel value="#{loanRequestBundle.EditDetallePrestamoLabel_fechaEntrega}" for="fechaEntrega" />
+                        <p:calendar id="fechaEntrega" pattern="MM/dd/yyyy HH:mm:ss" value="#{detallePrestamoController.selected.fechaEntrega}" title="#{loanRequestBundle.EditDetallePrestamoTitle_fechaEntrega}"  showOn="button"/>
+                        <p:outputLabel value="#{loanRequestBundle.EditDetallePrestamoLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{detallePrestamoController.selected.descripcion}" title="#{loanRequestBundle.EditDetallePrestamoTitle_descripcion}" />
+                        <p:outputLabel value="#{loanRequestBundle.EditDetallePrestamoLabel_idEquipo}" for="idEquipo" />
+                        <p:selectOneMenu id="idEquipo" value="#{detallePrestamoController.selected.idEquipo}" required="true" requiredMessage="#{loanRequestBundle.EditDetallePrestamoRequiredMessage_idEquipo}">
+                            <f:selectItem itemLabel="#{loanRequestBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"
+                                           var="idEquipoItem"
+                                           itemValue="#{idEquipoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{loanRequestBundle.EditDetallePrestamoLabel_idEstadoPrestamo}" for="idEstadoPrestamo" />
+                        <p:selectOneMenu id="idEstadoPrestamo" value="#{detallePrestamoController.selected.idEstadoPrestamo}" required="true" requiredMessage="#{loanRequestBundle.EditDetallePrestamoRequiredMessage_idEstadoPrestamo}">
+                            <f:selectItem itemLabel="#{loanRequestBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{estadoPrestamoController.itemsAvailableSelectOne}"
+                                           var="idEstadoPrestamoItem"
+                                           itemValue="#{idEstadoPrestamoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{loanRequestBundle.EditDetallePrestamoLabel_idPrestamo}" for="idPrestamo" />
+                        <p:selectOneMenu id="idPrestamo" value="#{detallePrestamoController.selected.idPrestamo}" required="true" requiredMessage="#{loanRequestBundle.EditDetallePrestamoRequiredMessage_idPrestamo}">
+                            <f:selectItem itemLabel="#{loanRequestBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{prestamoController.itemsAvailableSelectOne}"
+                                           var="idPrestamoItem"
+                                           itemValue="#{idPrestamoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detallePrestamoController.update}" value="#{loanRequestBundle.Save}" update="display,:DetallePrestamoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DetallePrestamoEditDialog');"/>
+                    <p:commandButton value="#{loanRequestBundle.Cancel}" onclick="DetallePrestamoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

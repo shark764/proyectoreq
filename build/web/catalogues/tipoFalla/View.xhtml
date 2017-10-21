@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoFallaViewDlg" widgetVar="TipoFallaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{cataloguesBundle.ViewTipoFallaTitle}">
+            <h:form id="TipoFallaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoFallaController.selected != null}">
+                        <h:outputText value="#{cataloguesBundle.ViewTipoFallaLabel_id}"/>
+                        <h:outputText value="#{tipoFallaController.selected.id}" title="#{cataloguesBundle.ViewTipoFallaTitle_id}"/>
+                        <h:outputText value="#{cataloguesBundle.ViewTipoFallaLabel_nombre}"/>
+                        <h:outputText value="#{tipoFallaController.selected.nombre}" title="#{cataloguesBundle.ViewTipoFallaTitle_nombre}"/>
+                        <h:outputText value="#{cataloguesBundle.ViewTipoFallaLabel_codigo}"/>
+                        <h:outputText value="#{tipoFallaController.selected.codigo}" title="#{cataloguesBundle.ViewTipoFallaTitle_codigo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{cataloguesBundle.Close}" onclick="TipoFallaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
