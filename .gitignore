@@ -40,3 +40,7 @@ nbdist/
 #netbeans files
 nbbuild.xml
 build.xml
+
+#Primefaces page
+web/welcomePrimefaces.xhtml
+web/welcomePrimefaces_1.xhtml
