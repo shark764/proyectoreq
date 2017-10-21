@@ -36,3 +36,11 @@ nbdist/
 *.DS_Store
 *.swp
 *.out
+
+#netbeans files
+nbbuild.xml
+build.xml
+
+#Primefaces page
+web/welcomePrimefaces.xhtml
+web/welcomePrimefaces_1.xhtml
