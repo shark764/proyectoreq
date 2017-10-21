@@ -36,3 +36,7 @@ nbdist/
 *.DS_Store
 *.swp
 *.out
+
+#netbeans files
+nbbuild.xml
+build.xml
